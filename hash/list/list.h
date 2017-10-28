@@ -12,13 +12,21 @@ typedef struct node_t {
 typedef struct list_t {
   int len;
   node* head;
-  node* current;
-} list;
+  node* cursor;
+  node* tip;
+} lst;
 
 node* create_node(char*);
 
-int push(node*, char*);
-char* pop(node*);
-char* shift(list*);
-char* nth(node* head, int n);
-void traverse(node* head);
+lst* create_list(char*);
+
+int push(lst*, char*);
+char* pop(lst*);
+char* shift(lst*);
+char* nth(lst* head, int n);
+int set_nth(lst*, int n, char*);
+int insert_nth(lst*, int, char*);
+int del_nth(lst*, int);
+int cat_lst(lst*, lst*);
+void traverse(lst* head);
+void free_lst(lst*);
