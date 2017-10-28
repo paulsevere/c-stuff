@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "./list/list.h"
 
 #define MULTIPLIER (91)
 
@@ -15,8 +16,19 @@ unsigned long hash(const char *s) {
 }
 
 int main(int argc, char **argv) {
-  unsigned long res;
-  res = hash(argv[1]);
-  printf("%lu\n", res);
+  node *head = create_node("one");
+  list *lst = malloc(sizeof(list));
+  lst->head = head;
+  printf("List head%s\n", lst->head->val);
+  push(head, "two");
+  push(head, "three");
+
+  traverse(head);
+  char *cool = nth(head, 0);
+  char *rad = pop(head);
+
+  printf("VALUE at %d: %s\n", 0, cool);
+  traverse(head);
+
   return 0;
 }
